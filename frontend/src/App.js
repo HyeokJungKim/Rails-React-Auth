@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import {fetchSnacks} from './Redux'
 
 // ROUTING
-import {Switch, Route, Link} from 'react-router-dom'
+import {Switch, Route, Link, withRouter} from 'react-router-dom'
 
 import LoginForm from './Components/LoginForm'
 import SnackContainer from './Containers/SnackContainer'
@@ -27,6 +27,9 @@ class App extends React.Component{
         <br/>
         <Link to="/login">Login</Link>
         <br/>
+        <Link to="/profile">Profile</Link>
+
+        <br/>
         <Link to="/snacks">Snacks</Link>
         <br/>
         <Switch>
@@ -39,10 +42,11 @@ class App extends React.Component{
   }
 }
 
-const mapStateToProps = ({snack}) => {
+const mapStateToProps = ({snack, user}) => {
   return {
-    snacks: snack.all
+    snacks: snack.all,
+    token: user.token
   }
 }
 
-export default connect(mapStateToProps, {fetchSnacks})(App);
+export default withRouter(connect(mapStateToProps, {fetchSnacks})(App));

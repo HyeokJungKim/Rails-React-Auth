@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 
-import Snack from './UserSnacks'
+import Snack from './Snack'
 import BuySnack from './BuySnack'
 
 const UserSnacks = (props) => (

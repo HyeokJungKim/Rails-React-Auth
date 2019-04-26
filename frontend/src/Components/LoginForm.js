@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
+import {fetchLogIn} from '../Redux'
 
 class LoginForm extends Component {
 
@@ -15,6 +17,8 @@ class LoginForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    let userObj = this.state
+    this.props.fetchLogIn(userObj, this.props.history.push)
   }
 
   render() {
@@ -39,4 +43,27 @@ class LoginForm extends Component {
 
 }
 
-export default LoginForm;
+export default connect(null, { fetchLogIn })(LoginForm);
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     fetchLogIn: (userObj) => dispatch(fetchLogIn(userObj))
+//   }
+// }
+// export default connect(null, mapDispatchToProps)(LoginForm);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
